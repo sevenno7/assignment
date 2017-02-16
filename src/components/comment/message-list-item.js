@@ -33,7 +33,7 @@ class MessageListItem extends Component {
         <section className="comment-section">
           <span>Responses</span>
           <ResponseList responses={responses} />
-          <MessageBox onPost={this.reply} />
+          <MessageBox onPost={this.reply} buttonLabel="Response" />
         </section>
       </section>
     );

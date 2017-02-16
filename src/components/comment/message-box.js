@@ -29,6 +29,8 @@ class MessageBox extends Component {
   }
 
   render() {
+    const {buttonLabel} = this.props;
+
     return (
       <section>
         <div className="col-sm-12 editor" onClick={this.focus}>
@@ -43,15 +45,20 @@ class MessageBox extends Component {
           <EmojiSuggestions />
         </div>
         <div className="col-sm-12 margin-top-15 padding-right-0">
-          <button type="submit" className="btn btn-default pull-right" onClick={this.submit}>Post</button>
+          <button type="submit" className="btn btn-default pull-right" onClick={this.submit}>{buttonLabel}</button>
         </div>
       </section>
     );
   }
 }
 
+MessageBox.defaultProps = {
+  buttonLabel: 'Post'
+}
+
 MessageBox.propTypes = {
   onPost: PropTypes.func.isRequired,
+  buttonLabel: PropTypes.string
 }
 
 export default MessageBox;
