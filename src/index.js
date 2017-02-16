@@ -3,7 +3,7 @@ import { render } from 'react-dom';
 import { Provider } from 'react-redux';
 import { createStore, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
-import { Router, Route, hashHistory } from 'react-router';
+import { Router, Route, IndexRoute, hashHistory } from 'react-router';
 import rootReducer from './reducers';
 import firebase from 'firebase';
 
@@ -11,6 +11,7 @@ import { CONSTANTS } from './constants';
 
 import App from './components/app';
 import Login from './components/account/login';
+import Main from './components/comment/main';
 
 const store = createStore(rootReducer, applyMiddleware(thunk));
 
@@ -33,7 +34,9 @@ const requireAuthentication = (nextState, replace, callback) => {
 };
 const routes = (
     <Route>
-        <Route path={CONSTANTS.ROUTES.HOME} component={App} onEnter={requireAuthentication} />
+        <Route path={CONSTANTS.ROUTES.HOME} component={App} onEnter={requireAuthentication} >
+            <IndexRoute component={Main} />            
+        </Route>
         <Route path={CONSTANTS.ROUTES.LOGIN} component={Login} />
     </Route>
 );

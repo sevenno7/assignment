@@ -12,19 +12,12 @@ class Login extends Component {
 
         this.state = {
             userName: ''
-        };
-
-        this.onInputChange = this.onInputChange.bind(this);
-        this.submit = this.submit.bind(this);
+        };    
     }
 
-    onInputChange(e) {
-        this.setState({
-            userName: e.target.value
-        });
-    }
+    onInputChange = (e) => { this.setState({ userName: e.target.value }); }
 
-    submit(e) {
+    submit = (e) => {
         e.preventDefault();
         const userName = trim(this.state.userName),
             {login} = this.props,
@@ -34,7 +27,7 @@ class Login extends Component {
             login(userName);
             router.push(CONSTANTS.ROUTES.HOME);
         }
-    }
+    };
 
     render() {
         return (
